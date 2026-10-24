@@ -49,8 +49,8 @@ func knapsackDP(wgt: [Int], val: [Int], cap: Int) -> Int {
     // 初始化 dp 表
     var dp = Array(repeating: Array(repeating: 0, count: cap + 1), count: n + 1)
     // 狀態轉移
-    for i in 1 ... n {
-        for c in 1 ... cap {
+    for i in 1 ..< n + 1 {
+        for c in 1 ..< cap + 1 {
             if wgt[i - 1] > c {
                 // 若超過背包容量，則不選物品 i
                 dp[i][c] = dp[i - 1][c]
@@ -69,9 +69,9 @@ func knapsackDPComp(wgt: [Int], val: [Int], cap: Int) -> Int {
     // 初始化 dp 表
     var dp = Array(repeating: 0, count: cap + 1)
     // 狀態轉移
-    for i in 1 ... n {
+    for i in 1 ..< n + 1 {
         // 倒序走訪
-        for c in (1 ... cap).reversed() {
+        for c in (1 ..< cap + 1).reversed() {
             if wgt[i - 1] <= c {
                 // 不選和選物品 i 這兩種方案的較大值
                 dp[c] = max(dp[c], dp[c - wgt[i - 1]] + val[i - 1])

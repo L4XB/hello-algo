@@ -11,12 +11,12 @@ func coinChangeDP(coins: [Int], amt: Int) -> Int {
     // Initialize dp table
     var dp = Array(repeating: Array(repeating: 0, count: amt + 1), count: n + 1)
     // State transition: first row and first column
-    for a in 1 ... amt {
+    for a in 1 ..< amt + 1 {
         dp[0][a] = MAX
     }
     // State transition: rest of the rows and columns
-    for i in 1 ... n {
-        for a in 1 ... amt {
+    for i in 1 ..< n + 1 {
+        for a in 1 ..< amt + 1 {
             if coins[i - 1] > a {
                 // If exceeds target amount, don't select coin i
                 dp[i][a] = dp[i - 1][a]
@@ -37,8 +37,8 @@ func coinChangeDPComp(coins: [Int], amt: Int) -> Int {
     var dp = Array(repeating: MAX, count: amt + 1)
     dp[0] = 0
     // State transition
-    for i in 1 ... n {
-        for a in 1 ... amt {
+    for i in 1 ..< n + 1 {
+        for a in 1 ..< amt + 1 {
             if coins[i - 1] > a {
                 // If exceeds target amount, don't select coin i
                 dp[a] = dp[a]

@@ -49,8 +49,8 @@ func knapsackDP(wgt: [Int], val: [Int], cap: Int) -> Int {
     // Инициализация таблицы dp
     var dp = Array(repeating: Array(repeating: 0, count: cap + 1), count: n + 1)
     // Переход состояний
-    for i in 1 ... n {
-        for c in 1 ... cap {
+    for i in 1 ..< n + 1 {
+        for c in 1 ..< cap + 1 {
             if wgt[i - 1] > c {
                 // Если вместимость рюкзака превышена, предмет i не выбирать
                 dp[i][c] = dp[i - 1][c]
@@ -69,9 +69,9 @@ func knapsackDPComp(wgt: [Int], val: [Int], cap: Int) -> Int {
     // Инициализация таблицы dp
     var dp = Array(repeating: 0, count: cap + 1)
     // Переход состояний
-    for i in 1 ... n {
+    for i in 1 ..< n + 1 {
         // Обход в обратном порядке
-        for c in (1 ... cap).reversed() {
+        for c in (1 ..< cap + 1).reversed() {
             if wgt[i - 1] <= c {
                 // Большее из двух решений: не брать или взять предмет i
                 dp[c] = max(dp[c], dp[c - wgt[i - 1]] + val[i - 1])

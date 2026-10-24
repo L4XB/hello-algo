@@ -10,8 +10,8 @@ func unboundedKnapsackDP(wgt: [Int], val: [Int], cap: Int) -> Int {
     // dp テーブルを初期化
     var dp = Array(repeating: Array(repeating: 0, count: cap + 1), count: n + 1)
     // 状態遷移
-    for i in 1 ... n {
-        for c in 1 ... cap {
+    for i in 1 ..< n + 1 {
+        for c in 1 ..< cap + 1 {
             if wgt[i - 1] > c {
                 // ナップサック容量を超えるなら品物 i は選ばない
                 dp[i][c] = dp[i - 1][c]
@@ -30,8 +30,8 @@ func unboundedKnapsackDPComp(wgt: [Int], val: [Int], cap: Int) -> Int {
     // dp テーブルを初期化
     var dp = Array(repeating: 0, count: cap + 1)
     // 状態遷移
-    for i in 1 ... n {
-        for c in 1 ... cap {
+    for i in 1 ..< n + 1 {
+        for c in 1 ..< cap + 1 {
             if wgt[i - 1] > c {
                 // ナップサック容量を超えるなら品物 i は選ばない
                 dp[c] = dp[c]

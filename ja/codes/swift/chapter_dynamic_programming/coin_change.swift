@@ -11,12 +11,12 @@ func coinChangeDP(coins: [Int], amt: Int) -> Int {
     // dp テーブルを初期化
     var dp = Array(repeating: Array(repeating: 0, count: amt + 1), count: n + 1)
     // 状態遷移：先頭行と先頭列
-    for a in 1 ... amt {
+    for a in 1 ..< amt + 1 {
         dp[0][a] = MAX
     }
     // 状態遷移: 残りの行と列
-    for i in 1 ... n {
-        for a in 1 ... amt {
+    for i in 1 ..< n + 1 {
+        for a in 1 ..< amt + 1 {
             if coins[i - 1] > a {
                 // 目標金額を超えるなら硬貨 i は選ばない
                 dp[i][a] = dp[i - 1][a]
@@ -37,8 +37,8 @@ func coinChangeDPComp(coins: [Int], amt: Int) -> Int {
     var dp = Array(repeating: MAX, count: amt + 1)
     dp[0] = 0
     // 状態遷移
-    for i in 1 ... n {
-        for a in 1 ... amt {
+    for i in 1 ..< n + 1 {
+        for a in 1 ..< amt + 1 {
             if coins[i - 1] > a {
                 // 目標金額を超えるなら硬貨 i は選ばない
                 dp[a] = dp[a]

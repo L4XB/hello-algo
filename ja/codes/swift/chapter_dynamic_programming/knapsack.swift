@@ -49,8 +49,8 @@ func knapsackDP(wgt: [Int], val: [Int], cap: Int) -> Int {
     // dp テーブルを初期化
     var dp = Array(repeating: Array(repeating: 0, count: cap + 1), count: n + 1)
     // 状態遷移
-    for i in 1 ... n {
-        for c in 1 ... cap {
+    for i in 1 ..< n + 1 {
+        for c in 1 ..< cap + 1 {
             if wgt[i - 1] > c {
                 // ナップサック容量を超えるなら品物 i は選ばない
                 dp[i][c] = dp[i - 1][c]
@@ -69,9 +69,9 @@ func knapsackDPComp(wgt: [Int], val: [Int], cap: Int) -> Int {
     // dp テーブルを初期化
     var dp = Array(repeating: 0, count: cap + 1)
     // 状態遷移
-    for i in 1 ... n {
+    for i in 1 ..< n + 1 {
         // 逆順に走査する
-        for c in (1 ... cap).reversed() {
+        for c in (1 ..< cap + 1).reversed() {
             if wgt[i - 1] <= c {
                 // 品物 i を選ばない場合と選ぶ場合の大きい方
                 dp[c] = max(dp[c], dp[c - wgt[i - 1]] + val[i - 1])
