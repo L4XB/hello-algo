@@ -15,7 +15,7 @@ class MaxHeap {
         // Add list elements to heap as is
         maxHeap = nums
         // Heapify all nodes except leaf nodes
-        for i in (0 ... parent(i: size() - 1)).reversed() {
+        for i in stride(from: parent(i: size() - 1), through: 0, by: -1) {
             siftDown(i: i)
         }
     }

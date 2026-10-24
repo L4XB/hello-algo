@@ -15,7 +15,7 @@ class MaxHeap {
         // 將串列元素原封不動新增進堆積
         maxHeap = nums
         // 堆積化除葉節點以外的其他所有節點
-        for i in (0 ... parent(i: size() - 1)).reversed() {
+        for i in stride(from: parent(i: size() - 1), through: 0, by: -1) {
             siftDown(i: i)
         }
     }
