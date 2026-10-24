@@ -188,7 +188,7 @@ TreeNode *removeHelper(TreeNode *node, int val) {
 /* 删除节点 */
 // 由于引入了 stdio.h ，此处无法使用 remove 关键词
 void removeItem(AVLTree *tree, int val) {
-    TreeNode *root = removeHelper(tree->root, val);
+    tree->root = removeHelper(tree->root, val);
 }
 
 /* 查找节点 */

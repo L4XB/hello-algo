@@ -188,7 +188,7 @@ TreeNode *removeHelper(TreeNode *node, int val) {
 /* Remove node */
 // Cannot use remove keyword here due to stdio.h inclusion
 void removeItem(AVLTree *tree, int val) {
-    TreeNode *root = removeHelper(tree->root, val);
+    tree->root = removeHelper(tree->root, val);
 }
 
 /* Search node */

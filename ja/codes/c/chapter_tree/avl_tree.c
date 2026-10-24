@@ -188,7 +188,7 @@ TreeNode *removeHelper(TreeNode *node, int val) {
 /* ノードを削除 */
 // stdio.h を導入しているため、ここでは remove 識別子を使えない
 void removeItem(AVLTree *tree, int val) {
-    TreeNode *root = removeHelper(tree->root, val);
+    tree->root = removeHelper(tree->root, val);
 }
 
 /* ノードを探索 */

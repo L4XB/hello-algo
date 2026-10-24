@@ -188,7 +188,7 @@ TreeNode *removeHelper(TreeNode *node, int val) {
 /* Удаление узла */
 // Из-за подключения stdio.h здесь нельзя использовать ключевое слово remove
 void removeItem(AVLTree *tree, int val) {
-    TreeNode *root = removeHelper(tree->root, val);
+    tree->root = removeHelper(tree->root, val);
 }
 
 /* Поиск узла */
